@@ -1,7 +1,22 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿
+<h2>
+    @ViewBag.Message
+    <paper-ripple>
+    </paper-ripple>
+</h2>
 
-<p>Use this area to provide additional information.</p>
+<div class="jumbotron">
+<p>Look at all the cool elements.</p>
+
+    <paper-button id="toast-button" onclick="displayToast('hello-toast')">Toast Anyone?</paper-button>
+
+    <paper-toast id="hello-toast" text="Hello I'm Toast!"></paper-toast>
+</div>
+
+<script>
+    function displayToast(toastID) {
+        var toast = document.getElementById(toastID);
+
+        toast.show();
+    }
+</script>
