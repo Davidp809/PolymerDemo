@@ -7,7 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <link rel="import" href="@Url.Content("~/Content/polymer_components/google_components/google-map/index.html")">
+    <link rel="import" href="@Url.Content("~/Content/polymer.html")">
+    @*<link rel="import" href="@Url.Content("~/Content/iron_components/iron-list/iron-list.html")">*@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,7 +25,6 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
