@@ -1,4 +1,15 @@
-﻿
+﻿<style>
+    paper-button.fancy-blue {
+        background: blue;
+        color: white;
+    }
+
+    paper-button.fancy-red {
+        background: red;
+        color: white;
+    }
+</style>
+
 <h2>
     @ViewBag.Message
     <paper-ripple>
@@ -6,17 +17,36 @@
 </h2>
 
 <div class="jumbotron">
-<p>Look at all the cool elements.</p>
+    <p>Look at all the cool elements.</p>
 
-    <paper-button id="toast-button" onclick="displayToast('hello-toast')">Toast Anyone?</paper-button>
+    <paper-button id="toast-button" class="fancy-blue" onclick="displayToast('hello-toast')" raised>Toast Anyone?</paper-button>
+    <paper-button id="toast-button" class="fancy-red" onclick="fireRequest()" raised>Pick A Card</paper-button>
 
+    <template is="dom-bind">
+        <div style="height:1000px;width:100%">
+            <iron-ajax id="card-requester" auto url="Cards/" method="POST" last-response="{{cards}}" />
+            <iron-list id="card-list" items="[[cards]]" as="[[card]]">
+                <template>
+                    <div>
+                        daferf <br/>
+
+                            [[card.content]]
+                    </div>
+                </template>
+            </iron-list>
+        </div>
+    </template>
     <paper-toast id="hello-toast" text="Hello I'm Toast!"></paper-toast>
 </div>
 
 <script>
     function displayToast(toastID) {
         var toast = document.getElementById(toastID);
-
         toast.show();
+    }
+
+    function fireRequest() {
+        var ajax = document.getElementById("card-requester");
+        ajax.generateRequest();
     }
 </script>
