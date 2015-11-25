@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Forms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>Forms</h2>
+
+    <form is="iron-form" id="formPost" method="post" action="/SubmitForm">
+        <paper-input name="name" label="Patient Name" required></paper-input>
+        <paper-input name="age" label="Patient Age" validate="^[0-9]+$" required></paper-input>
+
+        <paper-dropdown-menu label="Hair Color" name="hair-color" required>
+            <paper-menu class="dropdown-content">
+                <paper-item>Brown</paper-item>
+                <paper-item>Black</paper-item>
+                <paper-item>Blonde</paper-item>
+            </paper-menu>
+        </paper-dropdown-menu>
+        <br />
+
+        <paper-button raised onclick="submitHandler(event)">Submit</paper-button>
+        <paper-button raised onclick="resetHandler(event)">Reset</paper-button>
+    </form>
+</div>
+    <script>
+        document.getElementById('formPost').addEventListener('iron-form-submit', display);
+        function display(event) {
+            var output = document.getElementById('output');
+            output.innerHTML = JSON.stringify(event.detail);
+        }
+        function submitHandler(event) {
+            Polymer.dom(event).localTarget.parentElement.submit();
+        }
+        function resetHandler(event) {
+            Polymer.dom(event).localTarget.parentElement.reset();
+        }
+    </script>

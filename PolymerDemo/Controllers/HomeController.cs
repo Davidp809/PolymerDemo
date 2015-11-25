@@ -23,6 +23,11 @@ namespace PolymerDemo.Controllers
             return View();
         }
 
+        public ActionResult Forms()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult Cards()
         {
